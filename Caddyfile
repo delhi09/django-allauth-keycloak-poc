@@ -1,0 +1,12 @@
+localhost:80, proxy:80 {
+  reverse_proxy keycloak:8080 {
+    health_port 9000
+    health_uri /health/ready
+    health_interval 1s
+    health_timeout 3s
+  }
+  log {
+		output stdout
+	}
+	log_skip /resources/*
+}
